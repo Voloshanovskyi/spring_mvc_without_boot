@@ -3,6 +3,7 @@ package org.example.spring_mvc_without_boot.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -14,7 +15,8 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("org.example.spring_mvc_without_boot.controller")
+@ComponentScan(basePackages = "org.example.spring_mvc_without_boot")
+@ImportResource("classpath:application-context.xml")
 public class ApplicationConfig implements WebMvcConfigurer {
 
     @Override
@@ -25,3 +27,4 @@ public class ApplicationConfig implements WebMvcConfigurer {
         converters.add(converter);
     }
 }
+

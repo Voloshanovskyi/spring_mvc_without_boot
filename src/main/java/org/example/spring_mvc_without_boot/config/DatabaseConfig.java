@@ -28,7 +28,7 @@ public class DatabaseConfig {
         this.environment = environment;
     }
 
-    @Bean
+    @Bean("entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(basicDataSource());
@@ -47,8 +47,8 @@ public class DatabaseConfig {
         basicDataSource.setPassword(environment.getProperty("jdbc.pass"));
         return basicDataSource;
     }
-
-    private Properties hibernateProperties() {
+@Bean
+protected Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         properties.setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));

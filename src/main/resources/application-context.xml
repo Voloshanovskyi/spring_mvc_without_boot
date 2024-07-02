@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Enable component scanning -->
+    <context:component-scan base-package="org.example.spring_mvc_without_boot" />
+
+    <!-- Spring Data JPA configuration -->
+    <jpa:repositories base-package="org.example.spring_mvc_without_boot.repository"/>
+
+    <!-- Bean definitions -->
+    <bean id="accountService" class="org.example.spring_mvc_without_boot.service.AccountService">
+        <constructor-arg name="accountRepository" ref="accountRepository"/>
+    </bean>
+</beans>
+
